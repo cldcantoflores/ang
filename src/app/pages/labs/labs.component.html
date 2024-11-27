@@ -16,6 +16,11 @@
 <hr>
 <button (click)="clickHandler()">click me</button>
 <button (dblclick)="clickHandler()">double me</button>
-<p><input type="number" [value]="person.edad" (change)="changeHandler($event)"></p>
 <p>(change)</p>
+<p><input type="number" [value]="person.edad" (change)="changeHandler($event)"></p>
+<p>(keydown</p>
+<p><input type="text" [value]="person.edad" (keydown)="keydownHandler($event)"></p>
+<p>(shift t)</p>
+<p><input type="text" [value]="person.nombre" (keydown.shift.t)="clickHandler()"></p>
+
 </div>
