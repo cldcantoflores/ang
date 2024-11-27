@@ -15,6 +15,24 @@ export class LabsComponent {
     'Crear proyecto',
     'Crear componentes'
   ];
-  nombre="clao";
-  edad=42;
+
+  person={
+  nombre: "clao",
+  edad:42,
+  avatar : "https://w3schools.com/howto/img_avatar.png"
 }
+
+disabled=true;
+
+clickHandler(){
+  alert("Hola");
+}
+
+changeHandler(event: Event){
+  console.log(event);
+}
+
+  };//fin
+
+  
+  

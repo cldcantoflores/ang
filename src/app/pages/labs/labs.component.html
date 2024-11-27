@@ -1,3 +1,4 @@
+<div class="container">
 <h1>hola este es mi primer proyecto</h1>
 <h2>{{ welcome }}</h2>
 <ul>
@@ -8,4 +9,13 @@
 <hr />
 <h2>{{ 'Hola'.repeat(4) }}</h2>
 <p>la suma de 3+3 es: {{3+3}}</p>
-<p>Hola {{ nombre }}, de {{ edad }}</p>
+<button [disabled]="disabled">Click me</button>
+<p>person: {{person.nombre}}</p>
+<p><input type="number" [value]="person.edad"></p>
+<img [src]="person.avatar">
+<hr>
+<button (click)="clickHandler()">click me</button>
+<button (dblclick)="clickHandler()">double me</button>
+<p><input type="number" [value]="person.edad" (change)="changeHandler($event)"></p>
+<p>(change)</p>
+</div>
