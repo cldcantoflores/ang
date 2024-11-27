@@ -11,9 +11,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Bienvenido a mi primera aplicación con Angular!';
+  welcome ='Hola';
   tasks =[
-    'Instalar Anglular Cli',
+    'Instalar Angular Cli',
     'Crear proyecto',
     'Crear componentes'
   ];
-}
+} 
