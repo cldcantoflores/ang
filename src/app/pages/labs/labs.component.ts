@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
@@ -10,11 +10,14 @@ import { RouterOutlet } from '@angular/router';
 })
 export class LabsComponent {
   welcome ='Hola';
-  tasks =[
+  tasks =signal([
     'Instalar Angular Cli',
     'Crear proyecto',
-    'Crear componentes'
-  ];
+    'Crear componentes',
+    'Crear servicios'
+  ]);
+ 
+  name = signal('Claudia');
 
   person={
   nombre: "clao",
@@ -29,7 +32,9 @@ clickHandler(){
 }
 
 changeHandler(event: Event){
-  console.log(event);
+  const input = event.target as HTMLInputElement;
+  const newValue = input.value;
+  this.name.set(newValue);
 }
 
 keydownHandler(event: KeyboardEvent){
