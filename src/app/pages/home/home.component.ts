@@ -16,4 +16,16 @@ export class HomeComponent {
     'Crear componentes',
     'Crear servicios'
   ]);
+
+  changeHandler(event: Event){
+    const input  = event.target as HTMLInputElement;
+    const newTask = input.value;
+    this.tasks.update((tasks  => [...tasks, newTask] ))
+  }
+
+  deleteTask(index: number){
+    if(confirm("Are you sure to delete? ")) {
+     this.tasks.update((tasks) => tasks.filter((task, position) => position !== index));
+    }
+    }
 }
