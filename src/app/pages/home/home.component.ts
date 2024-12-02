@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Task} from './../../models/tasks.model';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,47 @@ import { RouterOutlet } from '@angular/router';
 })
 export class HomeComponent {
   welcome ='Hola';
-  tasks =signal([
-    'Instalar Angular Cli',
-    'Crear proyecto',
-    'Crear componentes',
-    'Crear servicios'
+  tasks =signal<Task[]>([
+    {
+      id: Date.now(),
+      title: 'Crear proyecto',
+      completed: false
+    },
+    {
+      id: Date.now(),
+      title: 'Crear componentes',
+      completed: false
+    },
+   
   ]);
 
   changeHandler(event: Event){
     const input  = event.target as HTMLInputElement;
     const newTask = input.value;
+    //this.tasks.update((tasks  => [...tasks, newTask] ))
+    this.addTask(newTask);
+  }
+
+  addTask(title: string){
+    const newTask ={
+      id:Date.now(),
+      title,
+      completed : false
+    }
+
     this.tasks.update((tasks  => [...tasks, newTask] ))
+  }
+
+  updateTask(index:number){
+    if(confirm("Confima que quiere marcar como completa?")){
+    
+        this.tasks.update((tasks) =>
+        tasks.map((task, i) =>
+          i === index ? { ...task, completed: !task.completed }: task
+        )
+      )
+  
+    }
   }
 
   deleteTask(index: number){
