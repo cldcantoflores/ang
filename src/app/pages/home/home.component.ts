@@ -22,8 +22,13 @@ export class HomeComponent {
       title: 'Crear componentes',
       completed: false
     },
-   
+    {
+      id: Date.now(),
+      title: 'Crear servicio',
+      completed: false
+    }
   ]);
+  userObjectField: any;
 
   changeHandler(event: Event){
     const input  = event.target as HTMLInputElement;
@@ -39,11 +44,12 @@ export class HomeComponent {
       completed : false
     }
 
-    this.tasks.update((tasks  => [...tasks, newTask] ))
+    this.tasks.update((tasks  => [...tasks, newTask] ));
   }
 
-  updateTask(index:number){
-    if(confirm("Confima que quiere marcar como completa?")){
+  updateTask(index:number,status:boolean){
+   const est = (status==false)?"completa":"incompleta";
+    if(confirm("Confirma que quiere marcar como "+est+" ?")){
     
         this.tasks.update((tasks) =>
         tasks.map((task, i) =>
